@@ -1,0 +1,15 @@
+services:
+  powernetiot:
+    build: .
+    image: ghcr.io/powernetsrl/powernetiot:latest
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+      # - "1883:1883"  # MQTT (se serve)
+    restart: unless-stopped
+    volumes:
+      - data:/var/lib/powernetiot
+
+volumes:
+  data:
