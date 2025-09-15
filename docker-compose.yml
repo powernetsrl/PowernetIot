@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    container_name: powernet-backend
+    environment:
+      - PORT=5000
+    ports:
+      - "5000:5000"
+  web:
+    build: ./frontend
+    container_name: powernet-web
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
